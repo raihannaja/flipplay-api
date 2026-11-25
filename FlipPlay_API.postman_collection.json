@@ -1,0 +1,662 @@
+{
+  "info": {
+    "name": "FlipPlay API - Modul 4",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000/api"
+    }
+  ],
+  "item": [
+    {
+      "name": "A. Media - sukses",
+      "item": [
+        {
+          "name": "01 GET semua media (200)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/media",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "media"
+              ]
+            }
+          }
+        },
+        {
+          "name": "02 GET cari judul playlist (200)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/media?search=playlist",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "media"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "playlist"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "03 GET filter tipe Film (200)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/media?type=Film",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "media"
+              ],
+              "query": [
+                {
+                  "key": "type",
+                  "value": "Film"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "04 GET detail media 1 (200)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/media/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "media",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "05 POST tambah Drama (201)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/media",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "media"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Squid Game\",\n  \"type\": \"Drama\",\n  \"genre\": \"Thriller\",\n  \"year\": 2021,\n  \"rating\": 8.0,\n  \"episodes\": 9\n}"
+            }
+          }
+        },
+        {
+          "name": "06 PATCH ubah rating media 6 (200)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/media/6",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "media",
+                "6"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rating\": 8.3\n}"
+            }
+          }
+        },
+        {
+          "name": "07 DELETE media 6 (200)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/media/6",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "media",
+                "6"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "B. Media - gagal",
+      "item": [
+        {
+          "name": "08 POST judul kosong (422)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/media",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "media"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"\",\n  \"type\": \"Drama\",\n  \"genre\": \"X\",\n  \"year\": 2021,\n  \"rating\": 8.0,\n  \"episodes\": 9\n}"
+            }
+          }
+        },
+        {
+          "name": "09 POST judul duplikat Goblin (422)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/media",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "media"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Goblin\",\n  \"type\": \"Drama\",\n  \"genre\": \"Fantasy\",\n  \"year\": 2016,\n  \"rating\": 8.6,\n  \"episodes\": 16\n}"
+            }
+          }
+        },
+        {
+          "name": "10 POST Drama tanpa episodes (422)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/media",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "media"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Tes Drama\",\n  \"type\": \"Drama\",\n  \"genre\": \"X\",\n  \"year\": 2021,\n  \"rating\": 8.0\n}"
+            }
+          }
+        },
+        {
+          "name": "11 POST rating 15 (422)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/media",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "media"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Tes Rating\",\n  \"type\": \"Film\",\n  \"genre\": \"X\",\n  \"year\": 2021,\n  \"rating\": 15,\n  \"duration\": 90\n}"
+            }
+          }
+        },
+        {
+          "name": "12 GET media 999 (404)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/media/999",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "media",
+                "999"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "C. Koleksi user - sukses",
+      "item": [
+        {
+          "name": "13 GET semua user (200)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/users",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users"
+              ]
+            }
+          }
+        },
+        {
+          "name": "14 POST tambah media 1 ke koleksi user 1 (201)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/users/1/collection",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "1",
+                "collection"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"media_id\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "15 POST tambah media 4 ke koleksi user 1 (201)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/users/1/collection",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "1",
+                "collection"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"media_id\": 4\n}"
+            }
+          }
+        },
+        {
+          "name": "16 GET user 1 beserta koleksi (200)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/users/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "17 DELETE media 1 dari koleksi user 1 (200)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/users/1/collection/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "1",
+                "collection",
+                "1"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "D. Koleksi user - gagal",
+      "item": [
+        {
+          "name": "18 POST media 4 lagi, duplikat (409)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/users/1/collection",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "1",
+                "collection"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"media_id\": 4\n}"
+            }
+          }
+        },
+        {
+          "name": "19 POST media_id tidak ada (422)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/users/1/collection",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "1",
+                "collection"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"media_id\": 999\n}"
+            }
+          }
+        },
+        {
+          "name": "20 POST tanpa media_id (422)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/users/1/collection",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "1",
+                "collection"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            }
+          }
+        },
+        {
+          "name": "21 DELETE media yang tidak ada di koleksi (404)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/users/1/collection/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "1",
+                "collection",
+                "1"
+              ]
+            }
+          }
+        },
+        {
+          "name": "22 GET user 999 (404)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/users/999",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "999"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
